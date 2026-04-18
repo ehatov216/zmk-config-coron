@@ -95,14 +95,6 @@
             label = "TO_LAYER_0";
         };
 
-        /* Screenshot to clipboard: Cmd+Shift+4 */
-
-        ss_clip: ss_clip {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(LS(N4))>;
-            label = "SS_CLIP";
-        };
     };
 
     /* ── Custom behaviours ───────────────────────────────────── */
@@ -143,10 +135,10 @@
         /* ══════════════════════════════════════════════════════
          * Layer 0 — BASE
          * ══════════════════════════════════════════════════════
-         * Row 0 (13): ESC  Q  W  E  R  T  [MUTE]  Y  U  I    O  P  BSPC
-         * Row 1 (14): TAB  A  S  D  F  G  [SS] [-]  H  J  K  L  :  RET
+         * Row 0 (13): ESC  Q  W  E  R  T  [---]   Y  U  I    O  P  BSPC
+         * Row 1 (14): TAB  A  S  D  F  G  [MUTE] [-]  H  J  K  L  :  RET
          * Row 2 (14): LSft Z  X  C  V  B  [:]  [;]  N  M  ,  .  /  RSft
-         * Row 3 (11): CAPS CTL ALT WIN HEN SPC MUH  BSPC RET  MC  RO
+         * Row 3 (11): CAPS CTL WIN ALT HEN SPC MUH  BSPC RET  MC  RO
          *
          * Thumb:
          *   HEN   hold→MOUSE(4)  tap→INT_HENKAN
@@ -158,10 +150,10 @@
 
         base_layer {
             bindings = <
-&kp ESC        &kp Q             &kp W        &kp E        &kp R                           &kp T        &kp C_MUTE                      &kp Y         &kp U        &lt SCROLL I &kp O     &kp P           &kp BACKSPACE
-&kp TAB        &kp A             &kp S        &kp D        &kp F                           &kp G        &ss_clip                        &kp MINUS     &kp H        &kp J        &kp K     &kp L           &kp SQT        &kp ENTER
+&kp ESC        &kp Q             &kp W        &kp E        &kp R                           &kp T        &trans                          &kp Y         &kp U        &lt SCROLL I &kp O     &kp P           &kp BACKSPACE
+&kp TAB        &kp A             &kp S        &kp D        &kp F                           &kp G        &kp C_MUTE                      &kp MINUS     &kp H        &kp J        &kp K     &kp L           &kp SQT        &kp ENTER
 &kp LEFT_SHIFT &mt LEFT_SHIFT Z  &kp X        &kp C        &kp V                           &kp B        &kp SQT                         &kp SEMICOLON &kp N        &kp M        &kp COMMA &kp DOT         &kp SLASH      &kp RIGHT_SHIFT
-&kp CAPS       &kp LCTRL         &kp LEFT_ALT &kp LEFT_WIN &lt_to_layer_0 MOUSE INT_HENKAN &lt NAV SPACE &lt_to_layer_0 NUM INT_MUHENKAN &kp BACKSPACE &lt SYS ENTER &kp LC(UP_ARROW) &kp INT_RO
+&kp CAPS       &kp LCTRL         &kp LEFT_WIN &kp LEFT_ALT &lt_to_layer_0 MOUSE INT_HENKAN &lt NAV SPACE &lt_to_layer_0 NUM INT_MUHENKAN &kp BACKSPACE &lt SYS ENTER &kp LC(UP_ARROW) &kp INT_RO
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -221,7 +213,7 @@
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -256,7 +248,7 @@
 
         scroll_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
