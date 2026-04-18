@@ -23,6 +23,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 /* ── Layer aliases ─────────────────────────────────────────── */
+
 #define BASE   0
 #define NAV    1
 #define NUM    2
@@ -31,6 +32,7 @@
 #define SYS    6
 
 /* ── Global behaviour tweaks ───────────────────────────────── */
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
@@ -38,11 +40,12 @@
 
 &trackball {
     automouse-layer = <MOUSE>;   /* = 4 */
-    scroll-layers   = <SCROLL>;  /* = 5 */
+    scroll-layers = <SCROLL>;  /* = 5 */
 };
 
 / {
     /* ── Combos ─────────────────────────────────────────────── */
+
     combos {
         compatible = "zmk,combos";
 
@@ -53,6 +56,7 @@
          *  11=P  12=BSPC  13=TAB  14=A
          *  21=H  22=J     25=SQT  26=ENTER
          */
+
         tab {
             bindings = <&kp TAB>;
             key-positions = <12 13>;
@@ -80,8 +84,10 @@
     };
 
     /* ── Macros ──────────────────────────────────────────────── */
+
     macros {
         /* Reset to layer 0 then send one keycode (for JIS IME keys) */
+
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -90,6 +96,7 @@
         };
 
         /* Screenshot to clipboard: Cmd+Shift+4 */
+
         ss_clip: ss_clip {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -99,17 +106,21 @@
     };
 
     /* ── Custom behaviours ───────────────────────────────────── */
+
     behaviors {
         /* Hold: mo <layer>   Tap: to_layer_0 <key>  (for HENKAN/MUHENKAN) */
+
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
+
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
 
         /* Encoder: rotate → scroll down / up */
+
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -118,6 +129,7 @@
     };
 
     /* ── Keymap ──────────────────────────────────────────────── */
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -133,12 +145,13 @@
          *   SQT  → :   SEMI → ;   MINUS → -
          *   Lt 5 I activates SCROLL layer (encoder scroll mode)
          */
+
         base_layer {
             bindings = <
-&kp ESC        &kp Q             &kp W        &kp E        &kp R                        &kp T        &kp C_MUTE                    &kp Y          &kp U        &lt SCROLL I &kp O    &kp P           &kp BACKSPACE
-&kp TAB        &kp A             &kp S        &kp D        &kp F                        &kp G        &ss_clip                      &kp MINUS      &kp H        &kp J        &kp K    &kp L           &kp SQT        &kp ENTER
-&kp LEFT_SHIFT &mt LEFT_SHIFT Z  &kp X        &kp C        &kp V                        &kp B        &kp SQT                       &kp SEMICOLON  &kp N        &kp M        &kp COMMA &kp DOT        &kp SLASH      &kp RIGHT_SHIFT
-&kp CAPS       &kp LCTRL         &kp LEFT_ALT &kp LEFT_WIN &lt_to_layer_0 SYS INT_HENKAN &lt NUM SPACE &lt_to_layer_0 NAV INT_MUHENKAN &kp BACKSPACE &lt NAV ENTER &kp LC(UP_ARROW) &kp INT_RO
+&kp ESC          &kp Q     &kp W             &kp E         &kp R         &kp T                          &kp Y          &kp U                            &kp I          &lt SCROLL O   &kp P             &kp BACKSPACE
+&kp TAB          &kp A     &kp S             &kp D         &kp F         &kp G                          &kp G          &ss_clip                         &kp MINUS      &kp H          &kp J             &kp K          &kp L    &kp ENTER
+&kp LSHIFT       &kp Z     &mt LEFT_SHIFT X  &kp C         &kp V         &kp B                          &kp BACKSPACE  &kp SQT                          &kp SEMICOLON  &kp N          &kp M             &kp COMMA      &kp DOT  &kp SLASH
+&kp RIGHT_SHIFT  &kp CAPS  &kp LCTRL         &kp LEFT_ALT  &kp LEFT_WIN  &lt_to_layer_0 SYS INT_HENKAN  &lt NUM SPACE  &lt_to_layer_0 NAV INT_MUHENKAN  &kp BACKSPACE  &lt NAV ENTER  &kp LC(UP_ARROW)
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -155,12 +168,13 @@
          * Mac shortcuts: LG(Z)=Undo  LG(X)=Cut  LG(C)=Copy  LG(V)=Paste
          *   LC(LS(TAB)) / LC(TAB) = prev/next browser tab
          */
+
         nav_layer {
             bindings = <
-&trans &kp LG(Q)  &kp LG(W)      &trans    &trans         &trans      &trans &kp HOME     &kp PG_DN &kp UP_ARROW   &kp PG_UP   &kp END       &trans
-&trans &trans     &trans         &trans    &trans          &kp LC(UP_ARROW) &trans &trans  &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &trans &trans
-&trans &kp LG(Z)  &kp LG(X)      &kp LG(C) &kp LG(V)     &trans      &trans &trans       &trans    &trans         &trans      &trans        &trans &trans
-&trans &trans     &trans         &trans    &trans          &trans      &trans &trans       &trans    &trans         &trans
+&trans  &kp LG(Q)  &kp LG(W)  &trans     &trans     &trans     &trans            &kp HOME  &kp PG_DN  &kp UP_ARROW    &kp PG_UP       &kp END
+&trans  &trans     &trans     &trans     &trans     &trans     &kp LC(UP_ARROW)  &trans    &trans     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &trans
+&trans  &trans     &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &trans            &trans    &trans     &trans          &trans          &trans        &trans           &trans
+&trans  &trans     &trans     &trans     &trans     &trans     &trans            &trans    &trans     &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp UP_ARROW DOWN_ARROW>;
@@ -182,48 +196,52 @@
          *   HASH  = LS(3) → # ✓   DOLLAR = LS(4) → $ ✓  PERCENT = LS(5) → % ✓
          *   LS(N8) → (   LS(N9) → )
          */
+
         num_layer {
             bindings = <
-&trans &kp MINUS                  &kp KP_NUMBER_7 &kp KP_NUMBER_8 &kp KP_NUMBER_9 &kp PLUS     &trans                   &kp EQUAL              &kp AMPERSAND        &kp TILDE            &kp LS(N8)             &kp LS(N9)           &trans
-&trans &kp SLASH                  &kp KP_NUMBER_4 &kp KP_NUMBER_5 &kp KP_NUMBER_6 &kp ASTERISK &kp LC(LA(KP_NUMBER_0))  &kp INT_RO             &kp EXCLAMATION      &kp LEFT_BRACKET     &kp HASH               &kp DOLLAR           &kp PERCENT    &trans
-&trans &mt LEFT_SHIFT KP_NUMBER_0 &kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp KP_NUMBER_3 &kp PERIOD   &kp EQUAL                &trans                 &kp RIGHT_BRACKET    &kp NON_US_HASH      &kp LS(RIGHT_BRACKET)  &kp LS(NON_US_HASH)  &kp INT_YEN    &trans
-&trans &trans                     &trans          &trans          &trans          &trans       &trans                   &trans                 &trans               &kp LS(INT_YEN)      &trans
+&trans  &kp MINUS  &kp KP_NUMBER_7             &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS         &trans        &kp EQUAL                &kp AMPERSAND  &kp TILDE          &kp LS(N8)        &kp LS(N9)
+&trans  &trans     &kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK  &kp LC(LA(KP_NUMBER_0))  &kp INT_RO     &kp EXCLAMATION    &kp LEFT_BRACKET  &kp HASH               &kp DOLLAR           &kp PERCENT
+&trans  &trans     &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL                &trans         &kp RIGHT_BRACKET  &kp NON_US_HASH   &kp LS(RIGHT_BRACKET)  &kp LS(NON_US_HASH)  &kp INT_YEN
+&trans  &trans     &trans                      &trans           &trans           &trans           &trans        &trans                   &trans         &trans             &kp LS(INT_YEN)
             >;
         };
 
         /* ══════════════════════════════════════════════════════
          * Layer 3 — (reserved / empty)
          * ══════════════════════════════════════════════════════ */
+
         layer_3 {
             bindings = <
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         /* ══════════════════════════════════════════════════════
          * Layer 4 — MOUSE   (auto-activated by trackball)
          * ══════════════════════════════════════════════════════ */
+
         mouse_layer {
             bindings = <
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans    &trans    &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &mkp MB1 &mkp MB3 &mkp MB2 &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans    &trans    &trans    &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         /* ══════════════════════════════════════════════════════
          * Layer 5 — SCROLL   (auto-activated; hold I to enter)
          * ══════════════════════════════════════════════════════ */
+
         scroll_layer {
             bindings = <
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -239,12 +257,13 @@
          * SS  = Screenshot clipboard (Cmd+Shift+4)
          * BT0-3 = Bluetooth profile select
          */
+
         sys_layer {
             bindings = <
-&trans &kp F1           &kp F2       &kp F3          &kp F4      &kp F5      &trans &kp F6    &kp F7        &kp F8        &kp F9        &kp F10      &trans
-&trans &kp C_VOL_DN     &kp C_VOL_UP &kp C_MUTE      &kp C_BRI_DN &kp C_BRI_UP &trans &trans &kp F11       &kp F12       &trans        &trans       &trans  &trans
-&trans &kp LC(UP_ARROW) &kp LG(LS(N4)) &trans        &trans      &trans      &trans &trans    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3 &bt BT_CLR &trans
-&trans &trans           &trans       &trans          &trans      &trans      &trans &trans    &trans        &trans        &bootloader
+&trans  &kp F1  &kp F2            &kp F3          &kp F4      &kp F5        &trans        &kp F6  &kp F7  &kp F8        &kp F9        &kp F10
+&trans  &trans  &kp C_VOL_DN      &kp C_VOL_UP    &kp C_MUTE  &kp C_BRI_DN  &kp C_BRI_UP  &trans  &trans  &kp F11       &kp F12       &trans        &trans        &trans
+&trans  &trans  &kp LC(UP_ARROW)  &kp LG(LS(N4))  &trans      &trans        &trans        &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR
+&trans  &trans  &trans            &trans          &trans      &trans        &trans        &trans  &trans  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
