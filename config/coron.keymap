@@ -13,8 +13,8 @@
  *   Row2(14): 26-39   Row3(11): 40-50
  *
  * Thumb cluster Row3:
- *   idx44=t1(Cmd)  idx45=t2(TB/HENKAN)  idx46=t3(NAV/SPACE)
- *   idx47=th1(NUM/MUHENKAN)  idx48=th2(RSFT)  idx49=-  idx50=^
+ *   idx44=t1(Cmd)  idx45=t2(TB/HENKAN)  idx46=t3(NAV/ENTER)
+ *   idx47=th1(NUM/MUHENKAN)  idx48=th2(BSPC)  idx49=-  idx50=^
  */
 
 #include <behaviors.dtsi>
@@ -107,6 +107,12 @@
             #sensor-binding-cells = <0>;
             bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
         };
+
+        tab_encoder: tab_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LC(LS(TAB))>, <&kp LC(TAB)>;
+        };
     };
 
     /* ── Keymap ──────────────────────────────────────────────── */
@@ -118,8 +124,8 @@
             bindings = <
 &kp ESC    &kp Q      &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
 &kp TAB    &kp A      &kp S     &kp D      &kp F     &kp G                         &kp LC(UP)     &kp ENTER                        &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp SQT
-&kp LSFT   &kp Z      &kp X     &kp C      &kp V     &kp B                         &kp BACKSPACE  &kp LANGUAGE_1                   &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RBKT
-&kp LCTRL  &kp GLOBE  &kp LALT  &ss_macro  &kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV SPACE  &lt_to_layer_0 NUM INT_MUHENKAN  &kp RSFT  &kp MINUS  &kp EQUAL
+&kp LSFT   &kp Z      &kp X     &kp C      &kp V     &kp B                         &kp SPACE      &kp LANGUAGE_1                   &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RBKT
+&kp LCTRL  &kp GLOBE  &kp LALT  &ss_macro  &kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV ENTER  &lt_to_layer_0 NUM INT_MUHENKAN  &kp BSPC  &kp MINUS  &kp EQUAL
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -155,7 +161,7 @@
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SCROLL  &trans     &trans  &trans    &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&tab_encoder>;
         };
 
         scroll_layer {
