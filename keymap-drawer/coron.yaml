@@ -54,37 +54,37 @@ layers:
   - Sft+-
   nav:
   - {t: ▽, type: trans}
-  - Gui+Z
-  - Gui+X
-  - Gui+C
-  - Gui+V
   - {t: ▽, type: trans}
-  - HOME
-  - PG DN
-  - PG UP
-  - END
   - {t: ▽, type: trans}
-  - ']'
-  - Gui+TAB
-  - '1'
-  - '2'
-  - '3'
-  - '4'
-  - '5'
   - {t: ▽, type: trans}
-  - ENTER
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - UP
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '!'
+  - '@'
+  - '#'
+  - $
+  - '%'
+  - ^
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - LEFT
   - DOWN
-  - UP
   - RIGHT
   - {t: ▽, type: trans}
-  - \
   - {t: ▽, type: trans}
-  - '6'
-  - '7'
-  - '8'
-  - '9'
-  - '0'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -105,46 +105,46 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   num:
-  - {t: ▽, type: trans}
-  - '1'
-  - '2'
-  - '3'
-  - '4'
-  - '5'
   - F1
   - F2
   - F3
   - F4
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '6'
+  - F5
+  - F6
   - '7'
   - '8'
   - '9'
-  - '0'
-  - MUTE
-  - {t: ▽, type: trans}
-  - F5
-  - F6
+  - /
+  - Sft+'
+  - '-'
   - F7
   - F8
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '!'
-  - '#'
-  - $
-  - '%'
-  - '&'
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - F9
   - F10
   - F11
   - F12
-  - \
-  - INT3
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '4'
+  - '5'
+  - '6'
+  - Sft+;
+  - Sft+-
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - .
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
