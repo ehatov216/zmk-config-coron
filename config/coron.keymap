@@ -161,7 +161,7 @@
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SCROLL  &trans     &trans  &trans    &trans
             >;
 
-            sensor-bindings = <&tab_encoder>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         scroll_layer {
