@@ -36,7 +36,7 @@
 &trackball {
     automouse-layer = <TB>;
     scroll-layers = <SCROLL>;
-    invert-scroll-y;
+    invert-x;
 };
 
 /* ── Global behaviour tweaks ───────────────────────────────── */
