@@ -1,20 +1,20 @@
-/* coron.keymap — Gemini concept adapted for coron / Mac JIS
+/* coron.keymap
  *
  * Layer map:
  *   0 BASE   — default typing
- *   1 NAV    — cursor, Mac shortcuts           (SPACE hold)
- *   2 NUM    — row-numpad / F-keys             (MUHENKAN hold)
- *   3 (reserved)
- *   4 MOUSE  — mouse buttons, scroll mode      (HENKAN hold / trackball auto)
- *   5 SCROLL — trackball scroll mode           (SPACE hold in MOUSE / I hold)
- *   6 SYS    — F-keys, BT, volume, bootloader  (ENTER hold)
+ *   1 NAV    — cursor, Mac shortcuts       (t3=Space hold)
+ *   2 NUM    — numpad / F-keys             (th1 hold)
+ *   3 TB     — trackball buttons           (trackball auto / t2 hold)
+ *   4 SCROLL — trackball scroll mode       (t3 hold in TB)
+ *   5 FN     — BT, bootloader             (combo: t3+th1)
  *
- * Thumb cluster (row 3, positions 4-8):
- *   pos4 HENKAN   hold → MOUSE(4),  tap → INT_HENKAN
- *   pos5 SPACE    hold → NAV(1),    tap → SPACE
- *   pos6 MUHENKAN hold → NUM(2),    tap → INT_MUHENKAN
- *   pos7 BSPC
- *   pos8 ENTER    hold → SYS(6),    tap → ENTER
+ * Physical key index reference (flat, 0-based):
+ *   Row0(12): 0-11    Row1(14): 12-25
+ *   Row2(14): 26-39   Row3(11): 40-50
+ *
+ * Thumb cluster Row3:
+ *   idx44=t1(Cmd)  idx45=t2(TB/HENKAN)  idx46=t3(NAV/SPACE)
+ *   idx47=th1(NUM/MUHENKAN)  idx48=th2(RSFT)  idx49=-  idx50=^
  */
 
 #include <behaviors.dtsi>
@@ -27,9 +27,16 @@
 #define BASE   0
 #define NAV    1
 #define NUM    2
-#define MOUSE  4
-#define SCROLL 5
-#define SYS    6
+#define TB     3
+#define SCROLL 4
+#define FN     5
+
+/* ── Trackball config ──────────────────────────────────────── */
+
+&trackball {
+    automouse-layer = <TB>;
+    scroll-layers = <SCROLL>;
+};
 
 /* ── Global behaviour tweaks ───────────────────────────────── */
 
@@ -38,56 +45,23 @@
     quick-tap-ms = <0>;
 };
 
-&trackball {
-    automouse-layer = <MOUSE>;   /* = 4 */
-    scroll-layers = <SCROLL>;  /* = 5 */
-};
-
 / {
     /* ── Combos ─────────────────────────────────────────────── */
 
     combos {
         compatible = "zmk,combos";
 
-        /* Key-position index reference (flat, 0-based):
-         *  Row0(12): 0-11    Row1(14): 12-25
-         *  Row2(14): 26-39   Row3(11): 40-50
-         *
-         *  10=P  11=BSPC  12=TAB  13=A
-         *  20=H  21=J     24=SQT  25=ENTER
-         */
-
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <11 12>;
-        };
-
-        shift_tab {
-            bindings = <&kp LS(TAB)>;
-            key-positions = <12 13>;
-        };
-
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <10 11>;
-        };
-
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
+        /* t3(idx46) + th1(idx47) simultaneously → FN layer */
+        fn_layer {
+            bindings = <&mo FN>;
+            key-positions = <46 47>;
+            timeout-ms = <50>;
         };
     };
 
     /* ── Macros ──────────────────────────────────────────────── */
 
     macros {
-        /* Reset to layer 0 then send one keycode (for JIS IME keys) */
-
         to_layer_0: to_layer_0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -95,23 +69,24 @@
             label = "TO_LAYER_0";
         };
 
+        ss_macro: ss_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LS(N4))>;
+            label = "SCREENSHOT";
+        };
     };
 
     /* ── Custom behaviours ───────────────────────────────────── */
 
     behaviors {
-        /* Hold: mo <layer>   Tap: to_layer_0 <key>  (for HENKAN/MUHENKAN) */
-
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
-
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
-
-        /* Encoder: vertical scroll (BASE / MOUSE) */
 
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
@@ -119,11 +94,16 @@
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
         };
 
-        /* Encoder: horizontal scroll (NAV) */
         hscroll_encoder: hscroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+        };
+
+        vol_encoder: vol_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
         };
     };
 
@@ -132,149 +112,96 @@
     keymap {
         compatible = "zmk,keymap";
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 0 — BASE
-         * ══════════════════════════════════════════════════════
-         * Row 0 (12): ESC  Q  W  E  R  T  Y  U  I    O  P  BSPC
-         * Row 1 (14): TAB  A  S  D  F  G  [MUTE] [-]  H  J  K  L  :  RET
-         * Row 2 (14): LSft Z  X  C  V  B  [:]  [;]  N  M  ,  .  /  RSft
-         * Row 3 (11): CAPS CTL WIN ALT HEN SPC MUH  BSPC RET  MC  RO
-         *
-         * Thumb:
-         *   HEN   hold→MOUSE(4)  tap→INT_HENKAN
-         *   SPACE hold→NAV(1)    tap→SPACE
-         *   MUH   hold→NUM(2)    tap→INT_MUHENKAN
-         *   ENTER hold→SYS(6)    tap→ENTER
-         *   I     hold→SCROLL(5) for trackball scroll
-         */
-
         base_layer {
             bindings = <
-&kp ESC        &kp Q             &kp W        &kp E        &kp R                           &kp T        &kp Y         &kp U        &lt SCROLL I &kp O     &kp P           &kp BACKSPACE
-&kp TAB        &kp A             &kp S        &kp D        &kp F                           &kp G        &kp C_MUTE                      &kp MINUS     &kp H        &kp J        &kp K     &kp L           &kp SQT        &kp ENTER
-&kp LEFT_SHIFT &mt LEFT_SHIFT Z  &kp X        &kp C        &kp V                           &kp B        &kp SQT                         &kp SEMICOLON &kp N        &kp M        &kp COMMA &kp DOT         &kp SLASH      &kp RIGHT_SHIFT
-&kp CAPS       &kp LCTRL         &kp LEFT_WIN &kp LEFT_ALT &lt_to_layer_0 MOUSE INT_HENKAN &lt NAV SPACE &lt_to_layer_0 NUM INT_MUHENKAN &kp BACKSPACE &lt SYS ENTER &kp LC(UP_ARROW) &kp INT_RO
+&kp ESC  &kp Q  &kp W  &kp E  &kp R  &kp T
+&kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT
+&kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G
+&kp LC(UP)  &kp ENTER  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT
+&kp LSFT  &kp Z  &kp X  &kp C  &kp V  &kp B
+&kp BACKSPACE  &kp LANGUAGE_1  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp RBKT
+&kp LCTRL  &kp GLOBE  &kp LALT  &ss_macro
+&kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV SPACE
+&lt_to_layer_0 NUM INT_MUHENKAN  &kp RSFT  &kp MINUS  &kp EQUAL
             >;
 
             sensor-bindings = <&scroll_encoder>;
         };
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 1 — NAV   (SPACE hold)
-         * ══════════════════════════════════════════════════════
-         * Row 0: ---  Quit  Close ---  ---  ---   ---  HOME PgDn  ↑   PgUp  END  ---
-         * Row 1: AppSw ---  ---  ---  ---  MCtrl  ---  ---  ←    ↓    ↑    →   ---  ---
-         * Row 2: ---  Undo  Cut  Copy Paste ---   ---  ---  ---  ---  ---  ---  ---  ---
-         * Row 3: all trans
-         *
-         * Encoder: horizontal scroll ←→
-         */
-
         nav_layer {
             bindings = <
-&trans       &kp LG(Q)  &kp LG(W)  &trans    &trans    &trans           &kp HOME       &kp PG_DN      &kp UP_ARROW   &kp PG_UP       &kp END         &trans
-&kp LG(TAB) &trans     &trans     &trans    &trans    &kp LC(UP_ARROW) &trans &trans         &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW    &kp RIGHT_ARROW &trans &trans
-&trans       &kp LG(Z)  &kp LG(X)  &kp LG(C) &kp LG(V) &trans           &trans &trans         &trans         &trans         &trans          &trans          &trans &trans
-&trans       &trans     &trans     &trans    &trans    &trans           &trans &trans         &trans         &trans         &trans
+&trans  &kp LG(Q)  &kp LG(W)  &trans  &trans  &trans
+&kp HOME  &kp PG_DN  &kp PG_UP  &kp END  &trans  &trans
+&kp LG(TAB)  &trans  &trans  &trans  &trans  &kp LC(UP)
+&trans  &kp ENTER  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans
+&trans  &trans  &trans
+&trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&hscroll_encoder>;
         };
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 2 — NUM   (MUHENKAN hold)
-         * ══════════════════════════════════════════════════════
-         * Left — row-based numpad:
-         *   Row 0: Q W E R T = 1 2 3 4 5
-         *   Row 1: A S D F G = 6 7 8 9 0
-         *   Row 2: Z X C V B = ! # $ % &
-         * Right — F-keys (4×3 block):
-         *   Row 0: Y U I O = F1 F2 F3 F4
-         *   Row 1: H J K L = F5 F6 F7 F8
-         *   Row 2: N M , . = F9 F10 F11 F12
-         *
-         * Encoder: volume down / up
-         */
-
         num_layer {
             bindings = <
-&trans &kp N1          &kp N2 &kp N3    &kp N4    &kp N5        &kp F1  &kp F2  &kp F3  &kp F4  &trans  &trans
-&trans &kp N6          &kp N7 &kp N8    &kp N9    &kp N0        &trans &trans  &kp F5  &kp F6  &kp F7  &kp F8  &trans  &trans
-&trans &kp EXCLAMATION &kp HASH &kp DOLLAR &kp PERCENT &kp AMPERSAND &trans &trans &kp F9 &kp F10 &kp F11 &kp F12 &trans  &trans
-&trans &trans          &trans &trans    &trans    &trans        &trans &trans  &trans  &trans  &trans
+&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
+&kp F1  &kp F2  &kp F3  &kp F4  &trans  &trans
+&trans  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+&trans  &trans  &kp F5  &kp F6  &kp F7  &kp F8  &trans  &trans
+&trans  &kp EXCL  &kp HASH  &kp DLLR  &kp PRCNT  &kp AMPS
+&trans  &trans  &kp F9  &kp F10  &kp F11  &kp F12  &kp BSLH  &kp INT3
+&trans  &trans  &trans  &trans
+&trans  &trans  &trans
+&trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&vol_encoder>;
         };
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 3 — (reserved / empty)
-         * ══════════════════════════════════════════════════════ */
-
-        layer_3 {
+        tb_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        /* ══════════════════════════════════════════════════════
-         * Layer 4 — MOUSE   (HENKAN hold / trackball auto)
-         * ══════════════════════════════════════════════════════
-         * Left:  D/F/G     = MB1/MB3/MB2 (left-hand click)
-         *        inner-L   = Cmd+[ (browser back)
-         *        inner-R   = Cmd+] (browser forward)
-         * Right: J/K/L     = MB1/MB3/MB2 (right-hand click)
-         * Thumb: SPACE hold → SCROLL(5) — trackball scroll mode
-         *
-         * Encoder: vertical scroll
-         */
-        mouse_layer {
-            bindings = <
-&trans &trans &trans &trans    &trans    &trans    &trans                &trans &trans   &trans   &trans   &trans
-&trans &trans &trans &mkp MB1  &mkp MB3  &mkp MB2  &kp LG(LEFT_BRACKET) &kp LG(RIGHT_BRACKET) &trans &mkp MB1 &mkp MB3 &mkp MB2 &trans &trans
-&trans &trans &trans &trans    &trans    &trans    &trans               &trans                &trans &trans   &trans   &trans   &trans &trans
-&trans &trans &trans &trans    &trans    &mo SCROLL &trans              &trans                &trans &trans   &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &kp LG(RBKT)  &kp LG(LBKT)
+&trans  &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans
+&trans  &trans  &mo SCROLL
+&trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
         };
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 5 — SCROLL   (SPACE hold in MOUSE / I hold in BASE)
-         * ══════════════════════════════════════════════════════ */
-
         scroll_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans
+&trans  &trans  &trans
+&trans  &trans  &trans  &trans
             >;
         };
 
-        /* ══════════════════════════════════════════════════════
-         * Layer 6 — SYS   (ENTER hold)
-         * ══════════════════════════════════════════════════════
-         * Row 0: ---  F1  F2  F3  F4  F5  ---  F6  F7  F8   F9   F10  ---
-         * Row 1: ---  VolD VolU Mute BriD BriU --- ---  F11 F12  ---  ---  ---  ---
-         * Row 2: ---  MC   SS   ---  ---  ---  --- ---  BT0 BT1  BT2  BT3  BTCLR ---
-         * Row 3: ---  ---  ---  ---  ---  ---  --- ---  --- ---  BOOT
-         *
-         * Encoder: volume down / up
-         */
-
-        sys_layer {
+        fn_layer {
             bindings = <
-&trans &kp F1           &kp F2         &kp F3   &kp F4       &kp F5       &kp F6   &kp F7       &kp F8       &kp F9       &kp F10      &trans
-&trans &kp C_VOL_DN     &kp C_VOL_UP   &kp C_MUTE &kp C_BRI_DN &kp C_BRI_UP &trans &trans &kp F11      &kp F12      &trans       &trans       &trans  &trans
-&trans &kp LC(UP_ARROW) &kp LG(LS(N4)) &trans   &trans       &trans       &trans &trans   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR &trans
-&trans &trans           &trans         &trans   &trans       &trans       &trans &trans   &trans       &trans       &bootloader
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &bt BT_CLR  &trans  &sys_reset  &bootloader  &trans
+&trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&trans  &trans  &trans  &trans
+&trans  &trans  &trans
+&trans  &trans  &trans  &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
     };
 };
