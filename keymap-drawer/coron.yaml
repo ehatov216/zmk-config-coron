@@ -40,7 +40,7 @@ layers:
   - ','
   - .
   - /
-  - ']'
+  - Sft+INT1
   - LCTRL
   - Ctl+UP ARROW
   - LALT
@@ -51,7 +51,7 @@ layers:
   - LANG1
   - {t: '&to_layer_0 BSPC', h: num}
   - DEL
-  - '='
+  - Sft+-
   nav:
   - {t: ▽, type: trans}
   - Gui+Q
@@ -64,7 +64,7 @@ layers:
   - PG UP
   - END
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ']'
   - Gui+TAB
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -78,7 +78,7 @@ layers:
   - UP
   - RIGHT
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - \
   - {t: ▽, type: trans}
   - Gui+Z
   - Gui+X
