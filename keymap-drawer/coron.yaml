@@ -46,10 +46,10 @@ layers:
   - LALT
   - '&ss_macro'
   - LGUI
-  - {t: ENTER, h: nav}
+  - {t: ENTER, h: num}
   - LANG2
   - LANG1
-  - {t: '&to_layer_0 BSPC', h: num}
+  - {t: '&to_layer_0 BSPC', h: nav}
   - DEL
   - Sft+-
   nav:
@@ -98,10 +98,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   num:
@@ -150,10 +150,10 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   tb:
