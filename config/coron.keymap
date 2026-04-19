@@ -124,7 +124,7 @@
             bindings = <
 &kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
 &kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LC(UP)     &kp ENTER                        &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp SQT
-&kp LSFT   &kp Z             &kp X     &kp C      &kp V     &kp B                         &kp SPACE      &kp LANGUAGE_1                   &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RBKT
+&kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &kp SPACE      &kp LANGUAGE_1                   &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RBKT
 &kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &ss_macro  &kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV ENTER  &lt_to_layer_0 NUM INT_MUHENKAN  &kp BSPC  &kp MINUS  &kp EQUAL
             >;
 
