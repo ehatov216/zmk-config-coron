@@ -34,7 +34,7 @@ layers:
   - V
   - B
   - SPACE
-  - LANGUAGE 1
+  - LANG2
   - N
   - M
   - ','
@@ -50,7 +50,7 @@ layers:
   - LANG2
   - LANG1
   - {t: '&to_layer_0 BSPC', h: num}
-  - '-'
+  - DEL
   - '='
   nav:
   - {t: ▽, type: trans}
@@ -202,9 +202,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - scroll
   - snipe
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -254,8 +254,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -359,8 +359,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
