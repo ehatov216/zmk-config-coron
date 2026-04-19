@@ -5,16 +5,17 @@
  *   1 NAV    — cursor, Mac shortcuts       (t3=NAV hold)
  *   2 NUM    — numpad / F-keys             (th1 hold)
  *   3 TB     — trackball buttons           (trackball auto)
- *   4 SCROLL — trackball scroll mode       (t3 hold in TB)
- *   5 FN     — BT, bootloader             (combo: t3+th1)
+ *   4 SCROLL — trackball scroll mode       (t3=英数 hold in TB)
+ *   5 FN     — BT, bootloader             (combo: 英数+かな)
+ *   6 SNIPE  — sniper mode (slow pointer)  (th1=かな hold in TB)
  *
  * Physical key index reference (flat, 0-based):
  *   Row0(12): 0-11    Row1(14): 12-25
  *   Row2(14): 26-39   Row3(11): 40-50
  *
  * Thumb cluster Row3:
- *   idx44=t1(Cmd)  idx45=t2(英数)  idx46=t3(NAV/ENTER)
- *   idx47=th1(NUM/BSPC)  idx48=th2(かな)  idx49=-  idx50=^
+ *   idx44=t1(Cmd)  idx45=t2(NAV/ENTER)  idx46=t3(英数)
+ *   idx47=th1(かな)  idx48=th2(NUM/BSPC)  idx49=-  idx50=^
  */
 
 #include <behaviors.dtsi>
@@ -30,12 +31,14 @@
 #define TB     3
 #define SCROLL 4
 #define FN     5
+#define SNIPE  6
 
 /* ── Trackball config ──────────────────────────────────────── */
 
 &trackball {
     automouse-layer = <TB>;
     scroll-layers = <SCROLL>;
+    snipe-layers = <SNIPE>;
 };
 
 /* ── Global behaviour tweaks ───────────────────────────────── */
@@ -125,7 +128,7 @@
 &kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
 &kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LG(SPACE)  &kp MINUS                        &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp SQT
 &kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &kp SPACE      &kp LANGUAGE_1                   &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RBKT
-&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &ss_macro  &kp LGUI  &kp LANG2           &lt NAV ENTER  &lt_to_layer_0 NUM BSPC     &kp LANG1       &kp MINUS  &kp EQUAL
+&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &ss_macro  &kp LGUI  &lt NAV ENTER  &kp LANG2  &kp LANG1  &lt_to_layer_0 NUM BSPC  &kp MINUS  &kp EQUAL
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -158,7 +161,7 @@
 &trans  &trans  &trans  &trans    &trans        &trans        &trans      &trans     &trans  &trans    &trans    &trans
 &trans  &trans  &trans  &trans    &kp LG(RBKT)  &kp LG(LBKT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
 &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2    &trans        &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans    &trans        &trans        &mo SCROLL  &trans     &trans  &trans    &trans
+&trans  &trans  &trans  &trans    &trans        &trans        &mo SCROLL  &mo SNIPE  &trans  &trans    &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -179,6 +182,14 @@
 &trans  &trans      &trans  &trans      &trans       &trans  &trans  &trans  &trans        &trans        &trans        &trans        &trans        &trans
 &trans  &bt BT_CLR  &trans  &sys_reset  &bootloader  &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
 &trans  &trans      &trans  &trans      &trans       &trans  &trans  &trans  &trans        &trans        &trans
+            >;
+        };
+        snipe_layer {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
