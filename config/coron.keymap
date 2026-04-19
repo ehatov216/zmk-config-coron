@@ -105,6 +105,12 @@
             #sensor-binding-cells = <0>;
             bindings = <&kp C_VOL_DN>, <&kp C_VOL_UP>;
         };
+
+        tab_encoder: tab_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LC(LS(TAB))>, <&kp LC(TAB)>;
+        };
     };
 
     /* ── Keymap ──────────────────────────────────────────────── */
@@ -173,7 +179,7 @@
 &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&tab_encoder>;
         };
 
         scroll_layer {
