@@ -60,8 +60,8 @@ layers:
   - $
   - '%'
   - '&'
+  - ''''
   - {t: ▽, type: trans}
-  - UP
   - {t: ▽, type: trans}
   - Sft+8
   - Sft+9
@@ -74,9 +74,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LEFT
-  - DOWN
-  - RIGHT
+  - {t: ▽, type: trans}
+  - UP
+  - {t: ▽, type: trans}
   - '['
   - ']'
   - {t: ▽, type: trans}
@@ -88,9 +88,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - LEFT
+  - DOWN
+  - RIGHT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
