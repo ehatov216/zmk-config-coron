@@ -125,10 +125,10 @@
 &kp TAB  &kp A  &kp S  &kp D  &kp F  &kp G
 &kp LC(UP)  &kp ENTER  &kp H  &kp J  &kp K  &kp L  &kp SEMI  &kp SQT
 &kp LSFT  &kp Z  &kp X  &kp C  &kp V  &kp B
-&kp BACKSPACE  &kp LANGUAGE_1  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp RBKT
+&kp SPACE  &kp LANGUAGE_1  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &kp RBKT
 &kp LCTRL  &kp GLOBE  &kp LALT  &ss_macro
-&kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV SPACE
-&lt_to_layer_0 NUM INT_MUHENKAN  &kp RSFT  &kp MINUS  &kp EQUAL
+&kp LGUI  &lt_to_layer_0 TB INT_HENKAN  &lt NAV ENTER
+&lt_to_layer_0 NUM INT_MUHENKAN  &kp BSPC  &kp MINUS  &kp EQUAL
             >;
 
             sensor-bindings = <&scroll_encoder>;
