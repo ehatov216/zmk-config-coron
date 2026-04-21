@@ -160,8 +160,8 @@
             bindings = <
 &trans  &trans  &trans  &trans    &trans        &trans        &trans      &trans     &trans  &trans    &trans    &trans
 &trans  &trans  &trans  &trans    &kp LG(RBKT)  &kp LG(LBKT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
-&trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2    &trans        &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans    &trans        &mo SCROLL    &mo SNIPE   &trans     &trans  &trans    &trans
+&trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2    &trans        &mo SCROLL  &trans     &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans    &trans        &trans        &mo SNIPE   &trans     &trans  &trans    &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
