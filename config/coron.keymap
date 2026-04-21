@@ -136,9 +136,9 @@
 
         nav_layer {
             bindings = <
-&trans       &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT   &kp AMPS  &kp SQT    &trans     &trans    &kp LPAR    &kp RPAR
-&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &kp UP     &trans     &kp LBKT  &kp RBKT
-&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(LBKT)  &kp LS(RBKT)
+&trans       &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT   &kp AMPS  &kp SQT    &trans     &kp MINUS &kp LPAR    &kp RPAR
+&trans       &kp LS(SLASH)  &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &kp UP     &trans     &kp LBKT  &kp RBKT
+&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(SLASH)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(LBKT)  &kp LS(RBKT)
 &trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &trans
             >;
 
