@@ -22,3 +22,33 @@ jobs:
       config_path: "keymap_drawer.config.yaml" # config file, ignored if not exists
       output_folder: "keymap-drawer"
       destination: "both"
+
+  add_idx:
+    name: "Add idx labels to SVG"
+    needs: draw
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Pull latest (include draw commit)
+        run: git pull origin ${{ github.ref_name }}
+
+      - name: Add idx labels to SVG
+        run: python3 keymap-drawer/add_idx_labels.py
+
+      - name: Commit idx-annotated SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add keymap-drawer/coron.svg
+          if git diff --staged --quiet; then
+            echo "変更なし（すでにラベル済み）"
+          else
+            git commit -m "chore: add idx labels to SVG"
+            git push
+          fi
