@@ -12,7 +12,7 @@ layers:
   - I
   - O
   - P
-  - '['
+  - BSPC
   - TAB
   - A
   - S
@@ -20,38 +20,38 @@ layers:
   - F
   - G
   - Gui+SPACE
-  - '-'
+  - Ctl+UP ARROW
   - H
   - J
   - K
   - L
   - ;
-  - ''''
+  - ENTER
   - LSHFT
   - Z
   - X
   - C
   - V
   - B
-  - SPACE
-  - LANG2
+  - '&ss_macro'
+  - Gui+SPACE
   - N
   - M
   - ','
   - .
   - /
-  - Sft+INT1
+  - SPC
   - LCTRL
   - Ctl+UP ARROW
   - LALT
-  - '&ss_macro'
   - LGUI
   - {t: ENTER, h: num}
   - LANG2
+  - SPC
   - LANG1
   - {t: '&to_layer_0 BSPC', h: nav}
   - DEL
-  - Sft+-
+  - SPC
   nav:
   - {t: ▽, type: trans}
   - '!'
@@ -62,23 +62,23 @@ layers:
   - '&'
   - ''''
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - '-'
   - (
   - )
   - {t: ▽, type: trans}
+  - Sft+/
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Sft+-
+  - Sft+INT1
   - UP
   - {t: ▽, type: trans}
   - '['
-  - ']'
+  - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -87,12 +87,12 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Sft+/
   - LEFT
   - DOWN
   - RIGHT
   - Sft+[
-  - Sft+]
+  - Sft+\
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -149,8 +149,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -173,7 +173,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Gui+]
+  - Gui+\
   - Gui+[
   - {t: ▽, type: trans}
   - ENTER
@@ -189,20 +189,20 @@ layers:
   - '&mkp MB3'
   - '&mkp MB2'
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - scroll
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - snipe
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -241,20 +241,20 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
