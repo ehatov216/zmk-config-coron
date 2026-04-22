@@ -14,8 +14,8 @@
  *   Row2(14): 26-39   Row3(11): 40-50
  *
  * Thumb cluster Row3:
- *   idx44=t1(Cmd)  idx45=t2(NAV/ENTER)  idx46=t3(英数)
- *   idx47=th1(かな)  idx48=th2(NUM/BSPC)  idx49=-  idx50=^
+ *   idx43=Cmd  idx44=t1(NUM/ENTER)  idx45=英数  idx46=SPC
+ *   idx47=かな  idx48=th2(NAV/BSPC)  idx49=DEL  idx50=SPC
  */
 
 #include <behaviors.dtsi>
@@ -37,6 +37,7 @@
 
 &trackball {
     automouse-layer = <TB>;
+    automouse-time-ms = <200>;
     scroll-layers = <SCROLL>;
     snipe-layers = <SNIPE>;
 };
@@ -54,7 +55,7 @@
     combos {
         compatible = "zmk,combos";
 
-        /* t3(idx46) + th1(idx47) simultaneously → FN layer */
+        /* SPC(idx46) + かな(idx47) simultaneously → FN layer */
 
         fn_layer {
             bindings = <&mo FN>;
@@ -125,10 +126,10 @@
 
         base_layer {
             bindings = <
-&kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
-&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LG(SPACE)  &kp MINUS                        &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp SQT
-&kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &kp SPACE      &kp LANG2                        &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp LS(INT1)
-&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &ss_macro  &kp LGUI  &lt NUM ENTER  &kp LANG2  &kp LANG1  &lt_to_layer_0 NAV BSPC  &kp DEL    &kp LS(MINUS)
+&kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp BSPC
+&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LG(SPACE)  &kp LC(UP_ARROW)                 &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp ENTER
+&kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &ss_macro      &kp LG(SPACE)                    &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp SPC
+&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt_to_layer_0 NAV BSPC  &kp DEL    &kp SPC
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -137,8 +138,8 @@
         nav_layer {
             bindings = <
 &trans       &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT   &kp AMPS  &kp SQT    &trans     &kp MINUS &kp LPAR    &kp RPAR
-&trans       &kp LS(SLASH)  &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &kp UP     &trans     &kp LBKT  &kp RBKT
-&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(SLASH)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(LBKT)  &kp LS(RBKT)
+&trans       &kp LS(SLASH)  &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(MINUS)  &kp LS(INT1)  &kp UP     &trans     &kp LBKT  &kp BSLH
+&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(SLASH)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(LBKT)  &kp LS(BSLH)
 &trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &trans
             >;
 
@@ -159,7 +160,7 @@
         tb_layer {
             bindings = <
 &trans  &trans  &trans  &trans    &trans        &trans        &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(RBKT)  &kp LG(LBKT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &trans    &kp LG(BSLH)  &kp LG(LBKT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
 &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2    &trans        &mo SCROLL  &trans     &trans  &trans    &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SNIPE   &trans     &trans  &trans    &trans
             >;
