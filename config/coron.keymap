@@ -37,7 +37,6 @@
 
 &trackball {
     automouse-layer = <TB>;
-    automouse-time-ms = <200>;
     scroll-layers = <SCROLL>;
     snipe-layers = <SNIPE>;
 };
