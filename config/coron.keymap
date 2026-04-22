@@ -66,12 +66,7 @@
     /* ── Macros ──────────────────────────────────────────────── */
 
     macros {
-        to_layer_0: to_layer_0 {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "TO_LAYER_0";
-        };
+
 
         ss_macro: ss_macro {
             compatible = "zmk,behavior-macro";
@@ -84,15 +79,7 @@
     /* ── Custom behaviours ───────────────────────────────────── */
 
     behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&to_layer_0>;
 
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <300>;
-        };
 
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
@@ -129,7 +116,7 @@
 &kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp BSPC
 &kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LG(SPACE)  &kp LC(UP_ARROW)                 &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp ENTER
 &kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &ss_macro      &kp LG(SPACE)                    &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp SPC
-&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt_to_layer_0 NAV BSPC  &kp DEL    &kp SPC
+&kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp DEL    &kp SPC
             >;
 
             sensor-bindings = <&scroll_encoder>;
