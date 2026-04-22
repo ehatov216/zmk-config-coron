@@ -147,7 +147,7 @@
         tb_layer {
             bindings = <
 &trans  &trans  &trans  &trans    &trans        &trans        &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(BSLH)  &kp LG(RIGHT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
 &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2    &trans        &mo SCROLL  &trans     &trans  &trans    &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SNIPE   &trans     &trans  &trans    &trans
             >;
