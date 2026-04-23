@@ -74,6 +74,30 @@
             bindings = <&kp LG(LS(N4))>;
             label = "SCREENSHOT";
         };
+
+        msc_down: msc_down {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>;
+        };
+
+        msc_up: msc_up {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_UP>;
+        };
+
+        msc_left: msc_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_LEFT>;
+        };
+
+        msc_right: msc_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&msc SCRL_RIGHT>;
+        };
     };
 
     /* ── Custom behaviours ───────────────────────────────────── */
@@ -82,17 +106,15 @@
 
 
         scroll_encoder: scroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
-            tap-ms = <10>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc_down>, <&msc_up>;
         };
 
         hscroll_encoder: hscroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
-            tap-ms = <10>;
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc_left>, <&msc_right>;
         };
 
         vol_encoder: vol_encoder {
@@ -121,7 +143,7 @@
 &kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp DEL    &kp SPC
             >;
 
-            sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         nav_layer {
@@ -132,7 +154,7 @@
 &trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &trans
             >;
 
-            sensor-bindings = <&hscroll_encoder SCRL_LEFT SCRL_RIGHT>;
+            sensor-bindings = <&hscroll_encoder>;
         };
 
         num_layer {
@@ -154,7 +176,7 @@
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SNIPE   &trans     &trans  &trans    &trans
             >;
 
-            sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         scroll_layer {
@@ -165,7 +187,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         fn_layer {
@@ -176,7 +198,7 @@
 &trans  &trans      &trans  &trans      &trans       &trans  &trans  &trans  &trans        &trans        &trans
             >;
 
-            sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
         snipe_layer {
             bindings = <
@@ -186,7 +208,7 @@
 &trans  &trans  &trans   &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans
             >;
 
-            sensor-bindings = <&scroll_encoder SCRL_DOWN SCRL_UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
     };
 };
