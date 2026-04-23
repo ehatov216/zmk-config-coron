@@ -380,9 +380,7 @@ path.combo {
 <g transform="translate(509, 145) rotate(-10.0)" class="key keypos-48">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="22" y="-18" style="font-size:8px;fill:#aaa;text-anchor:end;dominant-baseline:auto">48</text>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.9em" style="font-size: 64%">&amp;to_layer_0</tspan><tspan x="0" dy="1.2em" style="font-size: 64%">BSPC</tspan>
-</text>
+<text x="0" y="0" class="key tap">BSPC</text>
 <a href="#nav">
 <text x="0" y="24" class="key hold layer-activator">nav</text>
 </a></g>

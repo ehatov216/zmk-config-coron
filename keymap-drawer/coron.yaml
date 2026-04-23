@@ -49,7 +49,7 @@ layers:
   - LANG2
   - SPC
   - LANG1
-  - {t: '&to_layer_0 BSPC', h: nav}
+  - {t: BSPC, h: nav}
   - DEL
   - SPC
   nav:
