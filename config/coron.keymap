@@ -85,12 +85,14 @@
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            tap-ms = <10>;
         };
 
         hscroll_encoder: hscroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+            tap-ms = <10>;
         };
 
         vol_encoder: vol_encoder {
@@ -162,6 +164,8 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
+
+            sensor-bindings = <&scroll_encoder>;
         };
 
         fn_layer {
@@ -171,6 +175,8 @@
 &trans  &bt BT_CLR  &trans  &sys_reset  &bootloader  &trans  &trans  &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
 &trans  &trans      &trans  &trans      &trans       &trans  &trans  &trans  &trans        &trans        &trans
             >;
+
+            sensor-bindings = <&scroll_encoder>;
         };
         snipe_layer {
             bindings = <
@@ -179,6 +185,8 @@
 &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans
 &trans  &trans  &trans   &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans
             >;
+
+            sensor-bindings = <&scroll_encoder>;
         };
     };
 };
