@@ -19,8 +19,8 @@ layers:
   - D
   - F
   - G
-  - Gui+SPACE
-  - Ctl+UP ARROW
+  - Ctl+LEFT
+  - Ctl+RIGHT
   - H
   - J
   - K
@@ -40,7 +40,7 @@ layers:
   - ','
   - .
   - /
-  - SPC
+  - RSHFT
   - LCTRL
   - Ctl+UP ARROW
   - LALT
@@ -130,7 +130,7 @@ layers:
   - '6'
   - Sft+;
   - Sft+-
-  - {t: ▽, type: trans}
+  - '='
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -173,8 +173,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Gui+\
-  - Gui+[
+  - Gui+LEFT
+  - Gui+RIGHT
   - {t: ▽, type: trans}
   - ENTER
   - {t: ▽, type: trans}
