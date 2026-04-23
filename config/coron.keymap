@@ -21,7 +21,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 80
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 60
 #include <dt-bindings/zmk/pointing.h>
 
 /* ── Layer aliases ─────────────────────────────────────────── */
