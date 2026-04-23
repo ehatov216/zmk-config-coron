@@ -124,7 +124,7 @@
 
         nav_layer {
             bindings = <
-&trans       &kp EXCL   &kp LBKT   &kp HASH   &kp DLLR   &kp PRCNT   &kp AMPS  &kp SQT    &trans     &kp MINUS &kp LS(N8)    &kp LS(N9)
+&trans       &kp EXCL   &kp LBKT   &kp HASH   &kp DLLR   &kp PRCNT   &kp LS(N6)  &kp SQT    &trans     &kp MINUS &kp LS(N8)    &kp LS(N9)
 &trans       &kp LS(SLASH)  &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(MINUS)  &kp LS(INT1)  &kp UP     &trans     &kp RBKT  &kp BSLH
 &trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(SLASH)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(RBKT)  &kp LS(BSLH)
 &trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &trans
