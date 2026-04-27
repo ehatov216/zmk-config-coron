@@ -2,8 +2,8 @@
  *
  * Layer map:
  *   0 BASE   — default typing
- *   1 NAV    — cursor, Mac shortcuts       (t3=NAV hold)
- *   2 NUM    — numpad / F-keys             (th1 hold)
+ *   1 NAV    — navigation + consumer keys   (right thumb hold)
+ *   2 NUM    — numbers (Q-row) + symbols    (left thumb hold)
  *   3 TB     — trackball buttons           (trackball auto)
  *   4 SCROLL — trackball scroll mode       (t2=NAV/ENTER hold in TB)
  *   5 FN     — BT, bootloader             (combo: 英数+かな)
@@ -128,10 +128,10 @@
 
         nav_layer {
             bindings = <
-&trans       &kp EXCL   &kp LBKT   &kp HASH   &kp DLLR   &kp PRCNT   &kp LS(N6)  &kp SQT    &trans     &kp MINUS &kp LS(N8)    &kp LS(N9)
-&trans       &kp LS(SLASH)  &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(MINUS)  &kp LS(INT1)  &kp UP     &trans     &kp RBKT  &kp BSLH
-&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &kp LS(SLASH)  &kp LEFT  &kp DOWN  &kp RIGHT  &kp LS(RBKT)  &kp LS(BSLH)
-&trans       &trans     &trans     &trans     &trans     &trans      &trans    &trans     &trans     &trans    &trans
+&trans  &kp C_BRI_DN  &kp C_BRI_UP  &trans      &trans  &trans                        &trans    &trans     &trans    &trans    &trans   &trans
+&trans  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &trans  &trans  &trans  &trans        &kp LEFT  &kp DOWN   &kp UP    &kp RIGHT  &trans  &trans
+&trans  &kp C_PREV    &kp C_PP      &kp C_NEXT  &trans  &trans  &trans  &trans        &kp HOME  &kp PG_DN  &kp PG_UP  &kp END   &trans  &trans
+&trans  &trans        &trans        &trans      &trans  &trans  &trans  &trans        &trans    &trans     &trans
             >;
 
             sensor-bindings = <&hscroll_encoder>;
@@ -139,10 +139,10 @@
 
         num_layer {
             bindings = <
-&kp F1  &kp F2    &kp F3    &kp F4    &kp F5     &kp F6    &kp N7      &kp N8  &kp N9  &kp SLASH  &kp LS(SQT)  &kp MINUS
-&kp F7  &kp F8    &kp F9    &kp F10   &kp F11    &kp F12   &trans      &trans  &kp N4  &kp N5   &kp N6   &kp LS(SEMI)  &kp LS(MINUS)  &kp LS(MINUS)
-&trans  &trans    &trans    &trans    &trans     &trans    &trans      &kp N0  &kp N1  &kp N2   &kp N3   &kp DOT  &trans    &trans
-&trans  &trans    &trans    &trans    &trans     &trans    &trans      &trans  &trans  &trans   &trans
+&trans  &kp N1     &kp N2    &kp N3     &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
+&trans  &kp EXCL   &kp AT    &kp HASH   &kp DLLR  &kp PRCNT  &kp PIPE   &kp EQUAL  &kp CARET  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RPAR  &kp PLUS
+&trans  &kp QMARK  &kp FSLH  &kp COLON  &kp SEMI  &kp UNDER  &kp BSLH   &trans     &trans     &trans    &trans    &trans    &trans    &trans
+&trans  &trans     &trans    &trans     &trans    &trans     &trans     &trans     &trans     &trans    &trans
             >;
 
             sensor-bindings = <&vol_encoder>;
