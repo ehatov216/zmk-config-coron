@@ -76,6 +76,15 @@
             label = "SCREENSHOT";
         };
 
+        double_click: double_click {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <10>;
+            bindings = <&mkp MB1>, <&mkp MB1>;
+            label = "DOUBLE_CLICK";
+        };
+
     };
 
     /* ── Custom behaviours ───────────────────────────────────── */
@@ -152,7 +161,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans      &trans     &trans  &trans    &trans    &trans
 &trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &kp ENTER  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
-&trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &trans        &trans        &mo SNIPE   &trans     &trans  &trans    &trans
             >;
 
