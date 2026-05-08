@@ -125,7 +125,7 @@
         base_layer {
             bindings = <
 &kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
-&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &kp LC(LEFT)   &kp LC(RIGHT)                    &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp AMPS
+&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &mkp MB3       &kp LC(RIGHT)                    &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp AMPS
 &kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &lt SCROLL LG(LS(N4))  &kp LG(SPACE)                    &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RSHFT
 &kp LCTRL  &kp LC(UP_ARROW)  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp DEL    &kp SPC
             >;
@@ -158,9 +158,9 @@
         tb_layer {
             bindings = <
 &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &kp ENTER  &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans    &mkp MB1      &mkp MB2      &mkp MB3    &trans     &trans  &trans    &trans
+&trans  &trans  &trans  &trans    &mkp MB1      &mkp MB3      &mkp MB2    &trans     &trans  &trans    &trans
             >;
 
             sensor-bindings = <&scroll_encoder>;
