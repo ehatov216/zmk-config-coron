@@ -158,7 +158,7 @@
         tb_layer {
             bindings = <
 &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans  &trans
+&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
 &trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &mkp MB1      &mkp MB3      &mkp MB2    &trans     &trans  &trans    &trans
             >;
