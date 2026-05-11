@@ -7,7 +7,6 @@
  *   3 TB     — trackball buttons           (trackball auto)
  *   4 SCROLL — trackball scroll mode       (t2=NAV/ENTER hold in TB)
  *   5 FN     — BT, bootloader             (combo: 英数+かな)
- *   6 SNIPE  — sniper mode (slow pointer)  (t3=英数 hold in TB)
  *
  * Physical key index reference (flat, 0-based):
  *   Row0(12): 0-11    Row1(14): 12-25
@@ -23,6 +22,7 @@
 #include <dt-bindings/zmk/keys.h>
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 70
 #include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 /* ── Layer aliases ─────────────────────────────────────────── */
 
@@ -36,8 +36,11 @@
 /* ── Trackball config ──────────────────────────────────────── */
 
 &trackball {
-    automouse-layer = <TB>;
     scroll-layers = <SCROLL>;
+};
+
+&trackball_listener {
+    input-processors = <&tb_temp_layer TB 500>;
 };
 
 /* ── Global behaviour tweaks ───────────────────────────────── */
@@ -48,6 +51,14 @@
 };
 
 / {
+    /* ── Input processors ───────────────────────────────────── */
+
+    tb_temp_layer: tb_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        excluded-positions = <35 44 45 46>;
+    };
+
     /* ── Combos ─────────────────────────────────────────────── */
 
     combos {
@@ -158,7 +169,7 @@
         tb_layer {
             bindings = <
 &trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &mkp MB1      &mkp MB3      &mkp MB2    &trans     &trans  &trans    &trans
             >;
