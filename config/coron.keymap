@@ -64,7 +64,7 @@
     tb_temp_layer: tb_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
-        excluded-positions = <4 5 16 17 30 31 32 35 44 45 46>;
+        excluded-positions = <32 35 44 45 46>;
     };
 
     /* ── Combos ─────────────────────────────────────────────── */
@@ -154,10 +154,10 @@
 
         nav_layer {
             bindings = <
-&trans  &kp C_BRI_DN  &kp C_BRI_UP  &trans      &trans  &trans                        &trans    &kp HOME   &kp PG_UP &kp PG_DN &kp END  &trans
-&trans  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &trans  &trans  &trans  &trans        &trans    &trans     &kp UP    &trans     &trans   &trans
-&trans  &kp C_PREV    &kp C_PP      &kp C_NEXT  &trans  &trans  &trans  &trans        &trans    &kp LEFT   &kp DOWN  &kp RIGHT  &trans   &trans
-&trans  &trans        &trans        &trans      &trans  &trans  &trans  &trans        &trans    &trans     &trans
+&trans  &kp C_BRI_DN  &kp C_BRI_UP  &trans      &kp LC(LS(TAB))  &kp LC(TAB)                    &trans    &kp HOME   &kp PG_UP &kp PG_DN &kp END  &trans
+&trans  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &kp LG(LEFT)     &kp LG(RIGHT)  &trans  &trans  &trans    &trans     &kp UP    &trans     &trans   &trans
+&trans  &kp C_PREV    &kp C_PP      &kp C_NEXT  &kp LC(LEFT)     &kp LC(RIGHT)  &trans  &trans  &trans    &kp LEFT   &kp DOWN  &kp RIGHT  &trans   &trans
+&trans  &trans        &trans        &trans      &trans           &trans         &trans  &trans  &trans    &trans     &trans
             >;
 
             sensor-bindings = <&hscroll_encoder>;
@@ -176,9 +176,9 @@
 
         tb_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &kp LC(LS(TAB))  &kp LC(TAB)  &trans      &trans     &trans  &trans    &trans    &trans
-&trans  &trans  &trans  &trans    &kp LG(LEFT)  &kp LG(RIGHT)  &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(RIGHT)  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans  &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans     &trans  &trans    &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mo SCROLL  &trans     &trans  &double_click  &trans    &trans    &trans  &trans
 &trans  &trans  &trans  &trans    &mkp MB1      &mkp MB3      &mkp MB2    &trans     &trans  &trans    &trans
             >;
 
