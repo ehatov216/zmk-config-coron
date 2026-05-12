@@ -56,7 +56,7 @@
     tb_temp_layer: tb_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
-        excluded-positions = <35 44 45 46>;
+        excluded-positions = <4 5 16 17 30 31 32 35 44 45 46>;
     };
 
     /* ── Combos ─────────────────────────────────────────────── */
