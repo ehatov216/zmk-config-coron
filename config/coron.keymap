@@ -156,7 +156,7 @@
             bindings = <
 &trans  &kp C_BRI_DN  &kp C_BRI_UP  &trans      &kp LC(LS(TAB))  &kp LC(TAB)                    &trans    &kp HOME   &kp PG_UP &kp PG_DN &kp END  &trans
 &trans  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &kp LG(LEFT)     &kp LG(RIGHT)  &trans  &trans  &trans    &trans     &kp UP    &trans     &trans   &trans
-&trans  &kp LG(LS(MINUS)) &kp LG(MINUS) &trans      &kp LC(LEFT)     &kp LC(RIGHT)  &trans  &trans  &trans    &kp LEFT   &kp DOWN  &kp RIGHT  &trans   &trans
+&trans  &kp LG(LS(SEMI)) &kp LG(MINUS) &trans      &kp LC(LEFT)     &kp LC(RIGHT)  &trans  &trans  &trans    &kp LEFT   &kp DOWN  &kp RIGHT  &trans   &trans
 &trans  &trans        &trans        &trans      &trans           &trans         &trans  &trans  &trans    &trans     &trans
             >;
 
