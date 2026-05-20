@@ -144,7 +144,7 @@
         base_layer {
             bindings = <
 &kp ESC    &kp Q             &kp W     &kp E      &kp R     &kp T                         &kp Y          &kp U                            &kp I     &kp O      &kp P      &kp LBKT
-&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &mkp MB3       &kp LC(RIGHT)                    &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp AMPS
+&kp TAB    &kp A             &kp S     &kp D      &kp F     &kp G                         &mkp MB3       &kp LC(RIGHT)                    &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp RBKT
 &kp LSHFT  &kp Z             &kp X     &kp C      &kp V     &kp B                         &kp LC(UP_ARROW)       &kp LG(SPACE)                    &kp N     &kp M      &kp COMMA  &kp DOT   &kp SLASH  &kp RSHFT
 &kp LCTRL  &lt SCROLL LG(LS(N4))  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp DEL    &kp SPC
             >;
@@ -166,7 +166,7 @@
         num_layer {
             bindings = <
 &trans  &kp N1     &kp N2    &kp N3     &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp MINUS
-&trans  &kp EXCL   &kp AT    &kp HASH   &kp DLLR  &kp PRCNT  &kp PIPE   &kp UNDER  &kp EQUAL  &kp CARET  &kp DQT   &kp ASTRK  &kp LPAR  &kp COLON
+&trans  &kp EXCL   &kp AT    &kp HASH   &kp DLLR  &kp PRCNT  &kp LS(INT3)  &kp LS(MINUS)  &kp EQUAL  &kp CARET  &kp LS(SQT)  &kp ASTRK  &kp LPAR  &kp BSLH
 &trans  &kp QMARK  &kp FSLH  &kp SQT    &kp SEMI  &kp LS(INT1)  &kp BSLH   &trans     &trans     &trans    &trans    &trans    &trans    &trans
 &trans  &trans     &trans    &trans     &trans    &trans     &trans     &trans     &trans     &trans    &trans
             >;
