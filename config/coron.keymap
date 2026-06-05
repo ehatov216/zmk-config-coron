@@ -128,6 +128,12 @@
             tap-ms = <20>;
         };
 
+        zoom_encoder: zoom_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LG(MINUS)>, <&kp LG(EQUAL)>;
+        };
+
         vol_encoder: vol_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -165,7 +171,7 @@
 &trans  &trans        &trans        &trans      &trans           &trans         &trans  &trans  &trans    &trans     &trans
             >;
 
-            sensor-bindings = <&hscroll_encoder>;
+            sensor-bindings = <&zoom_encoder>;
         };
 
         num_layer {
