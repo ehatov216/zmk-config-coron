@@ -117,7 +117,8 @@
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&inc_dec_kp DOWN UP>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+            tap-ms = <20>;
         };
 
         hscroll_encoder: hscroll_encoder {
@@ -159,7 +160,7 @@
 &kp LCTRL  &lt SCROLL LG(LS(N4))  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp LG(C)  &kp LG(V)
             >;
 
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp DOWN UP>;
         };
 
         nav_layer {
