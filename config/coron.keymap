@@ -33,13 +33,6 @@
 #define SCROLL 4
 #define FN     5
 
-/* ── Scroll acceleration ───────────────────────────────────── */
-
-&msc {
-    time-to-max-speed-ms = <80>;
-    acceleration-exponent = <10>;
-};
-
 /* ── Trackball config ──────────────────────────────────────── */
 
 &trackball {
