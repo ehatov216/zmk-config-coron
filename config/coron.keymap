@@ -160,7 +160,7 @@
 &kp LCTRL  &lt SCROLL LG(LS(N4))  &kp LALT  &kp LGUI   &lt NUM ENTER  &kp LANG2  &kp SPC  &kp LANG1  &lt NAV BSPC  &kp LG(C)  &kp LG(V)
             >;
 
-            sensor-bindings = <&inc_dec_kp DOWN UP>;
+            sensor-bindings = <&scroll_encoder>;
         };
 
         nav_layer {
