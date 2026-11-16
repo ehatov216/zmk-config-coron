@@ -77,6 +77,17 @@
     combos {
         compatible = "zmk,combos";
 
+        /* BASE only: J(idx21) + K(idx22) → Cmd+Enter.
+         * Require a typing pause to avoid triggering during normal text input.
+         */
+        combo_cmd_enter {
+            bindings = <&kp LG(ENTER)>;
+            key-positions = <21 22>;
+            layers = <BASE>;
+            timeout-ms = <40>;
+            require-prior-idle-ms = <150>;
+        };
+
         /* SPC(idx46) + かな(idx47) simultaneously → FN layer */
 
         fn_layer {
