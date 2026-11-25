@@ -77,12 +77,12 @@
     combos {
         compatible = "zmk,combos";
 
-        /* BASE only: J(idx21) + K(idx22) → Cmd+Enter.
+        /* BASE only: K(idx22) + L(idx23) → Cmd+Enter.
          * Require a typing pause to avoid triggering during normal text input.
          */
         combo_cmd_enter {
             bindings = <&kp LG(ENTER)>;
-            key-positions = <21 22>;
+            key-positions = <22 23>;
             layers = <BASE>;
             timeout-ms = <40>;
             require-prior-idle-ms = <150>;
